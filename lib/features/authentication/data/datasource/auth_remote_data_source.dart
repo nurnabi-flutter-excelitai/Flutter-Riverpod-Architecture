@@ -3,13 +3,18 @@ import 'package:flutter_project/shared/data/remote/remote.dart';
 import 'package:flutter_project/shared/domain/models/models.dart';
 import 'package:flutter_project/shared/exceptions/http_exception.dart';
 
+
+
+
+
 abstract class LoginUserDataSource {
   Future<Either<AppException, User>> loginUser({required User user});
 }
 
-class LoginUserRemoteDataSource implements LoginUserDataSource {
-  final NetworkService networkService;
 
+class LoginUserRemoteDataSource implements LoginUserDataSource {
+
+  final NetworkService networkService;
   LoginUserRemoteDataSource(this.networkService);
 
   @override

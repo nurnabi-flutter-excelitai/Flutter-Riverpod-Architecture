@@ -18,6 +18,7 @@ class DashboardScreen extends ConsumerStatefulWidget {
 }
 
 class _DashboardScreenState extends ConsumerState<DashboardScreen> {
+
   final scrollController = ScrollController();
   final TextEditingController searchController = TextEditingController();
   bool isSearchActive = false;

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/features/authentication/presentation/providers/auth_providers.dart';
 import 'package:flutter_project/shared/theme/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../routes/app_route.dart';
+
+
 
 class MyApp extends ConsumerWidget {
   MyApp({super.key});

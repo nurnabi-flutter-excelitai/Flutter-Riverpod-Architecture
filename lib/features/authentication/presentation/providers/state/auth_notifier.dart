@@ -9,10 +9,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final AuthenticationRepository authRepository;
   final UserRepository userRepository;
 
+
   AuthNotifier({
     required this.authRepository,
     required this.userRepository,
   }) : super(const AuthState.initial());
+
+
 
   Future<void> loginUser(String username, String password) async {
     state = const AuthState.loading();
@@ -23,6 +26,24 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = await response.fold(
       (failure) => AuthState.failure(failure),
       (user) async {
+        final hasSavedUser = await userRepository.saveUser(user: user);
+        if (hasSavedUser) {
+          return const AuthState.success();
+        }
+        return AuthState.failure(CacheFailureException());
+      },
+    );
+  }
+
+  Future<void> logOut(String username, String password) async {
+    state = const AuthState.loading();
+    final response = await authRepository.loginUser(
+      user: User(username: username, password: password),
+    );
+
+    state = await response.fold(
+          (failure) => AuthState.failure(failure),
+          (user) async {
         final hasSavedUser = await userRepository.saveUser(user: user);
         if (hasSavedUser) {
           return const AuthState.success();

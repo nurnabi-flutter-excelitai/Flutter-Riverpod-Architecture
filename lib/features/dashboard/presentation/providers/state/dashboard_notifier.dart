@@ -10,9 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class DashboardNotifier extends StateNotifier<DashboardState> {
   final DashboardRepository dashboardRepository;
 
-  DashboardNotifier(
-    this.dashboardRepository,
-  ) : super(const DashboardState.initial());
+  DashboardNotifier(this.dashboardRepository,) : super(const DashboardState.initial());
 
   bool get isFetching =>
       state.state != DashboardConcreteState.loading &&

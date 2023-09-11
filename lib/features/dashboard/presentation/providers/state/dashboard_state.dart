@@ -39,6 +39,7 @@ class DashboardState extends Equatable {
     this.message = '',
   });
 
+
   DashboardState copyWith({
     List<Product>? productList,
     int? total,

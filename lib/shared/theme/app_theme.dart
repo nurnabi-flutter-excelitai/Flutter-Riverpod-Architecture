@@ -14,6 +14,7 @@ final appThemeProvider = StateNotifierProvider<AppThemeModeNotifier, ThemeMode>(
   },
 );
 
+
 class AppThemeModeNotifier extends StateNotifier<ThemeMode> {
   final StroageService stroageService;
 

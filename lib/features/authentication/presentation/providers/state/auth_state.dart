@@ -9,4 +9,5 @@ abstract class AuthState with _$AuthState {
   const factory AuthState.loading() = Loading;
   const factory AuthState.failure(AppException exception) = Failure;
   const factory AuthState.success() = Success;
+
 }

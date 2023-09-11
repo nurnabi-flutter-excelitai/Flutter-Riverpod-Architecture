@@ -13,6 +13,7 @@ abstract class _$AppRouter extends RootStackRouter {
   // ignore: unused_element
   _$AppRouter({super.navigatorKey});
 
+
   @override
   final Map<String, PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
@@ -21,12 +22,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashScreen(),
       );
     },
+
+
     DashboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const DashboardScreen(),
       );
     },
+
+
     LoginRoute.name: (routeData) {
       final args = routeData.argsAs<LoginRouteArgs>(
           orElse: () => const LoginRouteArgs());
@@ -38,11 +43,15 @@ abstract class _$AppRouter extends RootStackRouter {
   };
 }
 
+
+
+
+
+
 /// generated route for
 /// [SplashScreen]
 class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute({List<PageRouteInfo>? children})
-      : super(
+  const SplashRoute({List<PageRouteInfo>? children}) : super(
           SplashRoute.name,
           initialChildren: children,
         );
@@ -50,6 +59,7 @@ class SplashRoute extends PageRouteInfo<void> {
   static const String name = 'SplashRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+
 }
 
 /// generated route for
@@ -66,13 +76,13 @@ class DashboardRoute extends PageRouteInfo<void> {
   static const PageInfo<void> page = PageInfo<void>(name);
 }
 
+
+
+
 /// generated route for
 /// [LoginScreen]
 class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+  LoginRoute({Key? key, List<PageRouteInfo>? children,}) : super(
           LoginRoute.name,
           args: LoginRouteArgs(key: key),
           initialChildren: children,
@@ -82,6 +92,8 @@ class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
 
   static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
 }
+
+
 
 class LoginRouteArgs {
   const LoginRouteArgs({this.key});

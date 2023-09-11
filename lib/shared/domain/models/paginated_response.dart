@@ -9,6 +9,7 @@ class PaginatedResponse<T> {
 
   final List<T> data;
 
+
   PaginatedResponse(
       {required this.total, required this.skip, required this.data});
 

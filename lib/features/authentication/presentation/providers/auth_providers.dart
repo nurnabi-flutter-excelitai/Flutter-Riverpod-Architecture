@@ -6,13 +6,9 @@ import 'package:flutter_project/services/user_cache_service/domain/providers/use
 import 'package:flutter_project/services/user_cache_service/domain/repositories/user_cache_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final authStateNotifierProvider =
-    StateNotifierProvider<AuthNotifier, AuthState>(
-  (ref) {
-    final AuthenticationRepository authenticationRepository =
-        ref.watch(authRepositoryProvider);
-    final UserRepository userRepository =
-        ref.watch(userLocalRepositoryProvider);
+final authStateNotifierProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
+    final AuthenticationRepository authenticationRepository = ref.watch(authRepositoryProvider);
+    final UserRepository userRepository = ref.watch(userLocalRepositoryProvider);
     return AuthNotifier(
       authRepository: authenticationRepository,
       userRepository: userRepository,
