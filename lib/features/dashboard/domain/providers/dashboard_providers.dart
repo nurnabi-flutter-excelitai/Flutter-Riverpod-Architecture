@@ -5,8 +5,7 @@ import 'package:flutter_project/shared/data/remote/network_service.dart';
 import 'package:flutter_project/shared/domain/providers/dio_network_service_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final dashboardDatasourceProvider =
-    Provider.family<DashboardDatasource, NetworkService>(
+final dashboardDatasourceProvider = Provider.family<DashboardDatasource, NetworkService>(
   (_, networkService) => DashboardRemoteDatasource(networkService),
 );
 

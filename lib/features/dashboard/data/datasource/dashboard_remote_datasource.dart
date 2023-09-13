@@ -5,11 +5,12 @@ import 'package:flutter_project/shared/exceptions/http_exception.dart';
 import 'package:flutter_project/shared/globals.dart';
 
 abstract class DashboardDatasource {
-  Future<Either<AppException, PaginatedResponse>> fetchPaginatedProducts(
-      {required int skip});
-  Future<Either<AppException, PaginatedResponse>> searchPaginatedProducts(
-      {required int skip, required String query});
+  Future<Either<AppException, PaginatedResponse>> fetchPaginatedProducts({required int skip});
+  Future<Either<AppException, PaginatedResponse>> searchPaginatedProducts({required int skip, required String query});
 }
+
+
+
 
 class DashboardRemoteDatasource extends DashboardDatasource {
   final NetworkService networkService;
@@ -39,12 +40,15 @@ class DashboardRemoteDatasource extends DashboardDatasource {
             ),
           );
         }
-        final paginatedResponse =
-            PaginatedResponse.fromJson(jsonData, jsonData['products'] ?? []);
+        final paginatedResponse = PaginatedResponse.fromJson(jsonData, jsonData['products'] ?? []);
         return Right(paginatedResponse);
       },
     );
   }
+
+
+
+
 
   @override
   Future<Either<AppException, PaginatedResponse>> searchPaginatedProducts(
@@ -56,6 +60,8 @@ class DashboardRemoteDatasource extends DashboardDatasource {
         'limit': PRODUCTS_PER_PAGE,
       },
     );
+
+
 
     return response.fold(
       (l) => Left(l),

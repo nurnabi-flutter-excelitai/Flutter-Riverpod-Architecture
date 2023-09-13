@@ -19,6 +19,8 @@ class DashboardState extends Equatable {
   final DashboardConcreteState state;
   final String message;
   final bool isLoading;
+
+
   const DashboardState({
     this.productList = const [],
     this.isLoading = false,
@@ -28,6 +30,7 @@ class DashboardState extends Equatable {
     this.page = 0,
     this.total = 0,
   });
+
 
   const DashboardState.initial({
     this.productList = const [],

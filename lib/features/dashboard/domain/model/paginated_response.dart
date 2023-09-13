@@ -13,7 +13,7 @@ class PaginatedResponse<T> {
   PaginatedResponse({required this.total, required this.skip, required this.data});
 
   factory PaginatedResponse.fromJson(dynamic json, List<T> data,
-          {Function(dynamic json)? fixture}) =>
+      {Function(dynamic json)? fixture}) =>
       PaginatedResponse(
         total: json['total'] ?? 0,
         skip: json['skip'] ?? 0,

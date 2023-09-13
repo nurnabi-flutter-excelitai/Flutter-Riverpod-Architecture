@@ -16,6 +16,9 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+
+
+
     SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -32,6 +35,26 @@ abstract class _$AppRouter extends RootStackRouter {
     },
 
 
+
+    LandingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child:  LandingPage(),
+      );
+    },
+
+
+    // counter route
+    CounterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: CounterApp(),
+      );
+    },
+
+
+
+
     LoginRoute.name: (routeData) {
       final args = routeData.argsAs<LoginRouteArgs>(
           orElse: () => const LoginRouteArgs());
@@ -40,7 +63,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: LoginScreen(key: args.key),
       );
     },
+
+
+
+
+
   };
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -93,8 +133,6 @@ class LoginRoute extends PageRouteInfo<LoginRouteArgs> {
   static const PageInfo<LoginRouteArgs> page = PageInfo<LoginRouteArgs>(name);
 }
 
-
-
 class LoginRouteArgs {
   const LoginRouteArgs({this.key});
 
@@ -105,3 +143,41 @@ class LoginRouteArgs {
     return 'LoginRouteArgs{key: $key}';
   }
 }
+
+
+
+
+//........landing route ........
+
+class LandingRoute extends PageRouteInfo<void> {
+  const LandingRoute({List<PageRouteInfo>? children})
+      : super(
+    LandingRoute.name,
+    initialChildren: children,
+  );
+
+  static const String name = 'LandingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+
+//.........counter route.......
+class CounterRoute extends PageRouteInfo<void> {
+  const CounterRoute({List<PageRouteInfo>? children})
+      : super(
+    CounterRoute.name,
+    initialChildren: children,
+  );
+
+  static const String name = 'CounterRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+
+
+
+
+
+

@@ -26,7 +26,8 @@ class LoginScreen extends ConsumerWidget {
         if (next is Failure) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(next.exception.message.toString())));
         } else if (next is Success) {
-          AutoRouter.of(context).pushAndPopUntil(const DashboardRoute(), predicate: (_) => false);
+         // AutoRouter.of(context).pushAndPopUntil(const DashboardRoute(), predicate: (_) => false);
+          AutoRouter.of(context).pushAndPopUntil(const LandingRoute(), predicate: (_) => false);
         }
       }),
     );

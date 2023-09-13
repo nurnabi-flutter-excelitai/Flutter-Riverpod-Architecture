@@ -17,8 +17,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
       state.state != DashboardConcreteState.fetchingMore;
 
   Future<void> fetchProducts() async {
-    if (isFetching &&
-        state.state != DashboardConcreteState.fetchedAllProducts) {
+    if (isFetching && state.state != DashboardConcreteState.fetchedAllProducts) {
       state = state.copyWith(
         state: state.page > 0
             ? DashboardConcreteState.fetchingMore
@@ -64,8 +63,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
     }
   }
 
-  void updateStateFromResponse(
-      Either<AppException, PaginatedResponse<dynamic>> response) {
+  void updateStateFromResponse(Either<AppException, PaginatedResponse<dynamic>> response) {
     response.fold((failure) {
       state = state.copyWith(
         state: DashboardConcreteState.failure,
@@ -73,6 +71,7 @@ class DashboardNotifier extends StateNotifier<DashboardState> {
         isLoading: false,
       );
     }, (data) {
+
       final productList = data.data.map((e) => Product.fromJson(e)).toList();
 
       final totalProducts = [...state.productList, ...productList];

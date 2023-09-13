@@ -24,10 +24,12 @@ class LoginUserRemoteDataSource implements LoginUserDataSource {
         '/auth/login',
         data: user.toJson(),
       );
+
       return eitherType.fold(
         (exception) {
           return Left(exception);
         },
+
         (response) {
           final user = User.fromJson(response.data);
           // update the token for requests
@@ -49,3 +51,4 @@ class LoginUserRemoteDataSource implements LoginUserDataSource {
     }
   }
 }
+

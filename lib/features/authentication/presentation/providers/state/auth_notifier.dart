@@ -23,8 +23,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
       user: User(username: username, password: password),
     );
 
-    state = await response.fold(
-      (failure) => AuthState.failure(failure),
+    state = await response.fold((failure) => AuthState.failure(failure),
+
       (user) async {
         final hasSavedUser = await userRepository.saveUser(user: user);
         if (hasSavedUser) {
@@ -35,21 +35,5 @@ class AuthNotifier extends StateNotifier<AuthState> {
     );
   }
 
-  Future<void> logOut(String username, String password) async {
-    state = const AuthState.loading();
-    final response = await authRepository.loginUser(
-      user: User(username: username, password: password),
-    );
 
-    state = await response.fold(
-          (failure) => AuthState.failure(failure),
-          (user) async {
-        final hasSavedUser = await userRepository.saveUser(user: user);
-        if (hasSavedUser) {
-          return const AuthState.success();
-        }
-        return AuthState.failure(CacheFailureException());
-      },
-    );
-  }
 }

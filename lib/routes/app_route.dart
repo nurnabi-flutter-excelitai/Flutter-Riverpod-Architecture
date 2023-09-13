@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_project/features/counter/presentation/screens/counter_page.dart';
+import 'package:flutter_project/features/landing/presentation/screens/landing_page.dart';
 
 import '../features/authentication/presentation/screens/login_screen.dart';
 import '../features/dashboard/presentation/screens/dashboard_screen.dart';
@@ -21,6 +23,7 @@ class AppRouter extends _$AppRouter {
         /// routes go here
         AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: LoginRoute.page),
+        AutoRoute(page: LandingRoute.page),
         AutoRoute(page: DashboardRoute.page),
       ];
 
