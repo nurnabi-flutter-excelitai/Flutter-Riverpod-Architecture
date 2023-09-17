@@ -13,6 +13,7 @@ class Comments {
     postId = json['postId'];
     user = json['user'] != null ? User.fromJson(json['user']) : null;
   }
+
   int? id;
   String? body;
   int? postId;

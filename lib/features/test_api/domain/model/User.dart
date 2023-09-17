@@ -1,4 +1,9 @@
 class User {
+
+  int? id;
+  String? username;
+
+
   User({
     this.id,
     this.username,});
@@ -7,8 +12,6 @@ class User {
     id = json['id'];
     username = json['username'];
   }
-  int? id;
-  String? username;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

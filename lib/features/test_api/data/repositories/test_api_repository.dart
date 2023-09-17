@@ -3,7 +3,7 @@ import 'package:flutter_project/features/dashboard/data/datasource/dashboard_rem
 import 'package:flutter_project/features/dashboard/domain/repositories/dashboard_repository.dart';
 import 'package:flutter_project/features/test_api/data/datasource/test_api_remote_datasource.dart';
 import 'package:flutter_project/features/test_api/domain/model/paginated_comment_response.dart';
-import 'package:flutter_project/features/test_api/domain/repositories/dashboard_repository.dart';
+import 'package:flutter_project/features/test_api/domain/repositories/test_api_repository.dart';
 import 'package:flutter_project/shared/domain/models/paginated_response.dart';
 import 'package:flutter_project/shared/exceptions/http_exception.dart';
 

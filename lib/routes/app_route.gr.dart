@@ -54,6 +54,15 @@ abstract class _$AppRouter extends RootStackRouter {
 
 
 
+    TestApiRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: TestApiCommentsPage(),
+      );
+    },
+
+
+
 
     LoginRoute.name: (routeData) {
       final args = routeData.argsAs<LoginRouteArgs>(
@@ -63,20 +72,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: LoginScreen(key: args.key),
       );
     },
-
-
-
-
-
   };
-
-
-
-
-
-
-
-
 
 
 
@@ -160,6 +156,19 @@ class LandingRoute extends PageRouteInfo<void> {
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
+
+
+
+//........test api page .................
+
+class TestApiRoute extends PageRouteInfo<void> {
+  const TestApiRoute ({List<PageRouteInfo>? children}) : super(TestApiRoute.name, initialChildren: children,);
+
+  static const String name = 'TestApiRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
 
 
 //.........counter route.......

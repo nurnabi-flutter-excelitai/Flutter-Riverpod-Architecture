@@ -1,11 +1,15 @@
 import 'dart:async';
-
+import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_project/features/dashboard/presentation/providers/dashboard_state_provider.dart';
 import 'package:flutter_project/features/dashboard/presentation/providers/state/dashboard_state.dart';
 import 'package:flutter_project/features/dashboard/presentation/widgets/dashboard_drawer.dart';
+
+import 'package:flutter_project/features/test_api/presentation/providers/state/test_api_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../test_api/presentation/providers/test_api_state_provider.dart';
 
 @RoutePage()
 class DashboardScreen extends ConsumerStatefulWidget {
@@ -19,10 +23,12 @@ class DashboardScreen extends ConsumerStatefulWidget {
 
 class _DashboardScreenState extends ConsumerState<DashboardScreen> {
 
+
   final scrollController = ScrollController();
   final TextEditingController searchController = TextEditingController();
   bool isSearchActive = false;
   Timer? _debounce;
+
 
   @override
   void initState() {
@@ -39,10 +45,12 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   void scrollControllerListener() {
     if (scrollController.position.maxScrollExtent == scrollController.offset) {
       final notifier = ref.read(dashboardNotifierProvider.notifier);
+      final testApiNotifier = ref.read(testApiNotifierProvider.notifier);
       if (isSearchActive) {
         notifier.searchProducts(searchController.text);
       } else {
         notifier.fetchProducts();
+        testApiNotifier.fetchTestApiData();
       }
     }
   }
@@ -55,6 +63,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(dashboardNotifierProvider);
+    final testApistate = ref.watch(testApiNotifierProvider);
 
     ref.listen(
       dashboardNotifierProvider.select((value) => value),
@@ -62,12 +71,35 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         //show Snackbar on failure
         if (next.state == DashboardConcreteState.fetchedAllProducts) {
           if (next.message.isNotEmpty) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(next.message.toString())));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(next.message.toString())));
           }
         }
       }),
     );
+
+    ref.listen(
+      testApiNotifierProvider.select((value) => value),
+      ((TestApiState? previous, TestApiState next) {
+        //show Snackbar on failure
+        if (next.state == TestApiConcreteState.fetchedAllProducts) {
+          if (next.message.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(next.message.toString())));
+          }
+        }
+      }),
+    );
+    log("==========>>>>>>>>Check Test Api Data In console<<<<<<==========");
+    log("==========>>>>>>>>Check Test Api Data In console<<<<<<==========");
+    log("==========>>>>>>>>Check Test Api Data In console<<<<<<==========");
+    log("==========>>>>>>>>Check Test Api Data In console<<<<<<==========");
+    log(testApistate.commentsList.toString());
+    log('comments list length: $testApistate.commentsList.toString()');
+    log("==========>>>>>>>>Check Test Api Data In console<<<<<<==========");
+    log("==========>>>>>>>>Check Test Api Data In console<<<<<<==========");
+    log("==========>>>>>>>>Check Test Api Data In console<<<<<<==========");
+    log("==========>>>>>>>>Check Test Api Data In console<<<<<<==========");
+
+
     return Scaffold(
       appBar: AppBar(
         title: isSearchActive

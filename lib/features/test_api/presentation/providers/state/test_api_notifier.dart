@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_project/features/dashboard/domain/repositories/dashboard_repository.dart';
 import 'package:flutter_project/features/dashboard/presentation/providers/state/dashboard_state.dart';
 import 'package:flutter_project/features/test_api/domain/model/paginated_comment_response.dart';
-import 'package:flutter_project/features/test_api/domain/repositories/dashboard_repository.dart';
+import 'package:flutter_project/features/test_api/domain/repositories/test_api_repository.dart';
 import 'package:flutter_project/features/test_api/presentation/providers/state/test_api_state.dart';
 import 'package:flutter_project/shared/domain/models/paginated_response.dart';
 import 'package:flutter_project/shared/domain/models/product/product_model.dart';

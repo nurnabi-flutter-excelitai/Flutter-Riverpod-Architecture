@@ -66,7 +66,12 @@ class TestApiState extends Equatable {
 
   @override
   String toString() {
-    return 'DashboardState(isLoading:$isLoading, productLength: ${commentsList.length},total:$total page: $page, hasData: $hasData, state: $state, message: $message)';
+    return 'DashboardState('
+        'isLoading:$isLoading, '
+        'productLength: ${commentsList.length},'
+        'total:$total page: $page, '
+        'hasData: $hasData, '
+        'state: $state, message: $message)';
   }
 
   @override

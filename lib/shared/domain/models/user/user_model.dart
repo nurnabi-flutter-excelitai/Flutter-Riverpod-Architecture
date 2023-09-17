@@ -61,27 +61,27 @@ class User extends Equatable {
         token: map['token'] ?? '',
       );
 
-  // User copyWith({
-  //   int? id,
-  //   String? username,
-  //   String? password,
-  //   String? email,
-  //   String? firstName,
-  //   String? lastName,
-  //   String? gender,
-  //   String? image,
-  //   String? token,
-  // }) {
-  //   return User(
-  //     id: id ?? this.id,
-  //     username: username ?? this.username,
-  //     password: password ?? this.password,
-  //     email: email ?? this.email,
-  //     firstName: firstName ?? this.firstName,
-  //     lastName: lastName ?? this.lastName,
-  //     gender: gender ?? this.gender,
-  //     image: image ?? this.image,
-  //     token: token ?? this.token,
-  //   );
-  // }
+  User copyWith({
+    int? id,
+    String? username,
+    String? password,
+    String? email,
+    String? firstName,
+    String? lastName,
+    String? gender,
+    String? image,
+    String? token,
+  }) {
+    return User(
+      id: id ?? this.id,
+      username: username ?? this.username,
+      password: password ?? this.password,
+      email: email ?? this.email,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      gender: gender ?? this.gender,
+      image: image ?? this.image,
+      token: token ?? this.token,
+    );
+  }
 }

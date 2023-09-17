@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_project/features/counter/presentation/screens/counter_page.dart';
 import 'package:flutter_project/features/landing/presentation/screens/landing_page.dart';
 
+
 import '../features/authentication/presentation/screens/login_screen.dart';
 import '../features/dashboard/presentation/screens/dashboard_screen.dart';
 import '../features/splash/presentation/screens/splash_screen.dart';
+import '../features/test_api/presentation/screens/test_api_screen.dart';
 part 'app_route.gr.dart';
 
 
@@ -21,7 +23,8 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         /// routes go here
-        AutoRoute(page: SplashRoute.page, initial: true),
+        //AutoRoute(page: SplashRoute.page, initial: true),
+        AutoRoute(page: TestApiRoute.page, initial: true),
         AutoRoute(page: LoginRoute.page),
         AutoRoute(page: LandingRoute.page),
         AutoRoute(page: DashboardRoute.page),

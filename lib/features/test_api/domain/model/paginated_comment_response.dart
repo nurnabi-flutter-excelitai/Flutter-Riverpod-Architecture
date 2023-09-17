@@ -1,18 +1,17 @@
 
 
 import 'package:flutter_project/features/test_api/domain/model/Comments.dart';
-
+const int PER_PAGE_LIMIT = 20;
 class PaginatedCommentResponse {
   List<Comments>? comments;
   int? total;
   int? skip;
-  int? limit;
-  
+  static const int? limit=PER_PAGE_LIMIT;
+
   PaginatedCommentResponse({
       this.comments,
       this.total,
-      this.skip,
-      this.limit,});
+      this.skip,});
 
   PaginatedCommentResponse.fromJson(dynamic json) {
     if (json['comments'] != null) {
@@ -23,8 +22,7 @@ class PaginatedCommentResponse {
     }
     total = json['total'];
     skip = json['skip'];
-    limit = json['limit'];
   }
-  
+
 
 }
