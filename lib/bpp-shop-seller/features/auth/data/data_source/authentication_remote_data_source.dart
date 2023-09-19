@@ -1,30 +1,28 @@
 
 
 
+
 import 'package:dartz/dartz.dart';
 
 import '../../../../../shared/data/remote/network_service.dart';
 import '../../../../../shared/domain/models/user/user_model.dart';
 import '../../../../../shared/exceptions/http_exception.dart';
 
-
-
-
-abstract class BppShopSellerLoginUserDataSource {
+abstract class SellerLoginUserDataSource {
   Future<Either<AppException, User>> loginUser({required User user});
 }
 
 
-class BppShopSellerLoginUserRemoteDataSource implements BppShopSellerLoginUserDataSource{
+class SellerLoginUserRemoteDataSource implements SellerLoginUserDataSource {
 
   final NetworkService networkService;
-  BppShopSellerLoginUserRemoteDataSource (this.networkService);
+  SellerLoginUserRemoteDataSource(this.networkService);
 
   @override
   Future<Either<AppException, User>> loginUser({required User user}) async {
     try {
       final eitherType = await networkService.post(
-        '/auth/login',
+        '/api/auth/login',
         data: user.toJson(),
       );
 
@@ -48,7 +46,7 @@ class BppShopSellerLoginUserRemoteDataSource implements BppShopSellerLoginUserDa
         AppException(
           message: 'Unknown error occured',
           statusCode: 1,
-          identifier: '${e.toString()}\nLoginUserRemoteDataSource.loginUser',
+          identifier: '${e.toString()}\nSellerLoginUserRemoteDataSource .loginUser',
         ),
       );
     }

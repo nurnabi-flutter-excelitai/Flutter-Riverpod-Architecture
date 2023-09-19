@@ -24,7 +24,7 @@ dependencies:
   state_notifier: ^0.7.2+1
   #new add
   google_fonts: ^6.0.0
-  flutter_screenutil: ^5.9.0
+  flutter_screenutil:
 
 dev_dependencies:
   auto_route_generator: ^7.1.1

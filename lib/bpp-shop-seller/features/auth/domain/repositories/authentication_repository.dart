@@ -3,9 +3,9 @@
 
 import 'package:dartz/dartz.dart';
 
-import '../../../../../features/test_api/domain/model/User.dart';
+import '../../../../../shared/domain/models/user/user_model.dart';
 import '../../../../../shared/exceptions/http_exception.dart';
 
-abstract class BppShopSellerAuthenticationRepository {
+abstract class SellerAuthenticationRepository {
   Future<Either<AppException, User>> loginUser({required User user});
 }

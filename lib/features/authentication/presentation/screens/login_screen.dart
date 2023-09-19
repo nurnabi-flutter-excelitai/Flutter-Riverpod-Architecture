@@ -19,15 +19,16 @@ class LoginScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(authStateNotifierProvider);
 
+
+    final state = ref.watch(authStateNotifierProvider);
     ref.listen(authStateNotifierProvider.select((value) => value), ((previous, next) {
         //show Snackbar on failure
         if (next is Failure) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(next.exception.message.toString())));
         } else if (next is Success) {
-         // AutoRouter.of(context).pushAndPopUntil(const DashboardRoute(), predicate: (_) => false);
-          AutoRouter.of(context).pushAndPopUntil(const LandingRoute(), predicate: (_) => false);
+          AutoRouter.of(context).pushAndPopUntil(const DashboardRoute(), predicate: (_) => false);
+         // AutoRouter.of(context).pushAndPopUntil( LandingRoute(), predicate: (_) => false);
         }
       }),
     );
@@ -57,6 +58,7 @@ class LoginScreen extends ConsumerWidget {
                 loading: (_) => const Center(child: CircularProgressIndicator()),
                 orElse: () => loginButton(ref),
               ),
+
             ],
           ),
         ),

@@ -114,6 +114,24 @@ class TextformFiledValidator {
 
 
 
+  static String? validatePassword2(String value) {
+    final RegExp passwordRegExp = RegExp(r'^[0-9]+$');
+
+    if (value == null || value.isEmpty) {
+      return 'This field must not be empty';
+    } else if (value.length < 8) {
+      return 'Password must be 8 characters long';
+    } else if (!passwordRegExp.hasMatch(value)) {
+      return 'Password must contain only numbers';
+    }
+    return null;
+  }
+
+
+
+
+
+
 
  static textFormFiledValidator(value){
     if(value == null || value.isEmpty){

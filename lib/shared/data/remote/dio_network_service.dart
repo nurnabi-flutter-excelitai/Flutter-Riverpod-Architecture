@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -44,12 +45,12 @@ class DioNetworkService extends NetworkService with ExceptionHandlerMixin {
   }
 
   @override
-  Future<Either<AppException, response.Response>> post(String endpoint,
-      {Map<String, dynamic>? data}) {
+  Future<Either<AppException, response.Response>> post(String endpoint, {Map<String, dynamic>? data}) {
     final res = handleException(
       () => dio.post(
         endpoint,
         data: data,
+        // queryParameters: data,
       ),
       endpoint: endpoint,
     );

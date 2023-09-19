@@ -1,16 +1,21 @@
 
 
-import 'package:dartz/dartz.dart';
-import 'package:flutter_project/bpp-shop-seller/features/auth/domain/repositories/authentication_repository.dart';
-import 'package:flutter_project/features/test_api/domain/model/User.dart';
-import 'package:flutter_project/shared/exceptions/http_exception.dart';
 
-class BppShopSellerAuthenticationRepoImpl extends BppShopSellerAuthenticationRepository{
+import 'package:dartz/dartz.dart';
+
+import '../../../../../shared/domain/models/user/user_model.dart';
+import '../../../../../shared/exceptions/http_exception.dart';
+import '../../domain/repositories/authentication_repository.dart';
+import '../data_source/authentication_remote_data_source.dart';
+
+class SellerAuthenticationRepositoryImpl extends SellerAuthenticationRepository {
+  final SellerLoginUserDataSource dataSource;
+  SellerAuthenticationRepositoryImpl(this.dataSource);
   @override
   Future<Either<AppException, User>> loginUser({required User user}) {
-    // TODO: implement loginUser
-    throw UnimplementedError();
+    return dataSource.loginUser(user: user);
   }
-  
-  
 }
+
+
+
